@@ -18,20 +18,6 @@
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
 
- <!-- TEST -->
- <style>
-  #map1, #map2, #map3, #map4{
-    height: 200px;
-    width: 100%;
-  }
-
-  /* .card-img-top {
-    width: 100%;
-    height: 15vw;
-    object-fit: cover;
-  } */
-</style>
-<!-- TEST -->
 
 </head>
 
@@ -43,12 +29,12 @@
     </div>
 
   <div class="map-cards">
+
     <div class="row">
-    <div class="card" style="width: 18rem;">
-      <div class="col-3">
-        <div id="map1"></div>
-      </div>
-      <!-- <img src="..." alt="..." class="card-img-top"> -->
+      <div class="card" style="width: 18rem;">
+
+        <div id="map1" style="width: 100%; height: 300px"></div>
+
       <div class="card-body">
         <h5 class="card-title">Card title</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -58,25 +44,35 @@
     </div>
   </div>
 
-    <div class="card" style="width: 18rem;">
-      <img src="..." alt="..." class="card-img-top">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go to Map</a>
-      </div>
-    </div>
 
+  <div class="row">
     <div class="card" style="width: 18rem;">
-      <img src="..." alt="..." class="card-img-top">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go to Map</a>
-      </div>
+
+      <div id="map2" style="width: 100%; height: 300px"></div>
+
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="btn btn-primary">Go to Map</a>
+
     </div>
   </div>
+</div>
 
+<div class="row">
+  <div class="card" style="width: 18rem;">
+
+    <div id="map3" style="width: 100%; height: 300px"></div>
+
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go to Map</a>
+
+  </div>
+</div>
+</div>
+  </div>
 
   </main>
 
@@ -96,7 +92,7 @@
     <div id="map4"></div>
   </div>
 </div>
- <!--<script type="text/javascript" src="/scripts/maps.js"></script>-->
+
 <script>
   function initMap() {
     const zoom = 5;
