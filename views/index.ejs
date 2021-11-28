@@ -7,17 +7,31 @@
 
   <title>Wiki Maps</title>
 
+
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/header.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main-body.css" type="text/css" />
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
 
+ <!-- TEST -->
+ <style>
+  #map1, #map2, #map3, #map4{
+    height: 200px;
+    width: 100%;
+  }
 
+  /* .card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+  } */
+</style>
+<!-- TEST -->
 
 </head>
 
@@ -29,8 +43,23 @@
     </div>
 
   <div class="map-cards">
+    <div class="row">
     <div class="card" style="width: 18rem;">
-      <img src="https://i.ibb.co/dD6vbVn/81-B6-B877-0-A79-4546-A5-B0-17-A9-DB5130-C6-4-5005-c.jpg" alt="81-B6-B877-0-A79-4546-A5-B0-17-A9-DB5130-C6-4-5005-c" class="card-img-top">
+      <div class="col-3">
+        <div id="map1"></div>
+      </div>
+      <!-- <img src="..." alt="..." class="card-img-top"> -->
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go to Map</a>
+
+      </div>
+    </div>
+  </div>
+
+    <div class="card" style="width: 18rem;">
+      <img src="..." alt="..." class="card-img-top">
       <div class="card-body">
         <h5 class="card-title">Card title</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -39,16 +68,7 @@
     </div>
 
     <div class="card" style="width: 18rem;">
-      <img src="https://i.ibb.co/wQQBFkm/EB0-D0849-31-A4-45-C0-91-EA-78-A8-FA1-A011-E-4-5005-c.jpg" alt="EB0-D0849-31-A4-45-C0-91-EA-78-A8-FA1-A011-E-4-5005-c" class="card-img-top">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go to Map</a>
-      </div>
-    </div>
-
-    <div class="card" style="width: 18rem;">
-      <img src="https://i.ibb.co/GvBnfWb/61642761-E4-D2-4-FEA-B30-C-F3-B6-CE3-E4-EAD-4-5005-c.jpg" alt="61642761-E4-D2-4-FEA-B30-C-F3-B6-CE3-E4-EAD-4-5005-c" class="card-img-top">
+      <img src="..." alt="..." class="card-img-top">
       <div class="card-body">
         <h5 class="card-title">Card title</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -59,6 +79,59 @@
 
 
   </main>
+
+
+<!-- TEST API -->
+<div class="row">
+  <div class="col-3">
+    <div id="map1"></div>
+  </div>
+  <div class="col-3">
+    <div id="map2"></div>
+  </div>
+  <div class="col-3">
+    <div id="map3"></div>
+  </div>
+  <div class="col-3">
+    <div id="map4"></div>
+  </div>
+</div>
+ <!--<script type="text/javascript" src="/scripts/maps.js"></script>-->
+<script>
+  function initMap() {
+    const zoom = 5;
+    const lat_long_Ottawa = { lat: 45.424721, lng: -75.695000 };
+    const lat_long_Toronto = { lat: 43.651070,lng: -79.347015 };
+    const lat_long_Moscow = { lat: 55.751244, lng: 37.618423 };
+    const lat_long_Casablanca = { lat: 33.589886, lng: -7.603869 };
+    const coordsOttawa = {
+      zoom: zoom,
+      center: lat_long_Ottawa
+    };
+    const map1 = new google.maps.Map(document.getElementById("map1"), coordsOttawa);
+    const coordsToronto = {
+      zoom: zoom,
+      center: lat_long_Toronto
+    }
+    const map2 = new google.maps.Map(document.getElementById("map2"), coordsToronto);
+    const coordsMoscow = {
+      zoom: zoom,
+      center: lat_long_Moscow
+    }
+    const map3 = new google.maps.Map(document.getElementById("map3"), coordsMoscow);
+    const coordsCasablanca = {
+      zoom: zoom,
+      center: lat_long_Casablanca
+    }
+    const map4 = new google.maps.Map(document.getElementById("map4"), coordsCasablanca);
+  }
+</script>
+<script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFDKNEPIGZWJq1f4KhwZYftX7uWbzBi-c&callback=initMap">
+</script>
+
+<!-- FINISH TEST API-->
+
 </body>
 
 </html>

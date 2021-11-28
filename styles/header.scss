@@ -1,0 +1,26 @@
+.navbar {
+  padding-right: 5em;
+  padding-left: 5em;
+}
+
+.navbar-brand {
+  color: antiquewhite;
+  font-size: xx-large;
+}
+
+// .navbar .navbar-nav .nav-link {
+//   color:antiquewhite;
+//   font-size: large;
+// }
+
+.navbar {
+  .navbar-nav {
+    .nav-link {
+      color: rgb(228, 113, 5);
+      font-size: large;
+    }
+    .nav-text {
+      color: red;
+    }
+  }
+}
