@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/createmap.css" type="text/css" />
 
 
 
@@ -22,12 +23,39 @@
 <body>
   <%- include('partials/_header') %>
   <main>
-    <div class="home-title">
+    <div class="create-form">
+      <form action="" method="">
+        <div class="form-element">
+          <h4>Map Details</h4>
+          <label for="mapTitle" class="form-label">Map Title:</label>
+          <input type="text" class="form-control" id="map-title" placeholder="Map title">
+        </div>
+        <div class="form-element">
+          <label for="mapDescription" class="form-label">Map Description:</label>
+          <textarea type="text" class="form-control" id="map-description" placeholder="Description of your map..."></textarea>
+        </div>
+        <div class="pin-element">
+          <h4>Add a Pin 📍</h4>
+          <label for="pinTitle" class="form-label">Pin Title:</label>
+          <input type="text" class="form-control" id="pin-title" placeholder="Pin title">
+        </div>
+        <div class="form-element">
+          <label for="pinDescription" class="form-label">Pin Description:</label>
+          <textarea type="text" class="form-control" id="pin-description" placeholder="Description of your pin..."></textarea>
+
+        </div>
+
+
+
+
+
+      </form>
+
 
 
     </div>
 
-    </form>
+
   </main>
 </body>
 </html>
