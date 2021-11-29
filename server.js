@@ -64,7 +64,7 @@ app.get("/", (req, res) => {
 
 app.get("/login", (req, res) => {
 
-  
+
 
 
   res.render("login");
@@ -76,6 +76,10 @@ app.get("/register", (req, res) => {
 
 app.get("/createmap", (req, res) => {
   res.render("createmap");
+});
+
+app.get("/maps", (req, res) => {
+  res.render("maps_index");
 });
 
 app.listen(PORT, () => {
