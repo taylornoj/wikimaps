@@ -60,6 +60,10 @@ app.get("/register", (req, res) => {
   res.render("register");
 });
 
+app.get("/createmap", (req, res) => {
+  res.render("createmap");
+});
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
