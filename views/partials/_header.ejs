@@ -13,12 +13,35 @@
         </div> -->
 
 
+
+
+        <% if (user) { %>
+          <form method="POST" action="/logout">
+            <button class="btn btn-success btn-outline-dark" name="username">
+              Logout
+            </button>
+          </form>
+          <% } else { %>
+
+
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-item nav-link" href="/register" style="margin: 1em">Register</a>
           <a class="nav-item nav-link" href="/login" style="margin: 1em">Login</a>
         </div>
     </div>
+
+    <% } %>
+
   </div>
+
+
 </nav>
+
+
+
+
+
+
+
 </header>

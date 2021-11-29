@@ -2,6 +2,16 @@
 require("dotenv").config();
 
 // Web server config
+
+
+
+// Install the cookie-session ::
+// npm install cookie-session
+const cookieSession = require('cookie-session');
+
+
+
+
 const PORT = process.env.PORT || 8080;
 const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
@@ -35,6 +45,13 @@ app.use(
 
 app.use(express.static("public"));
 
+
+// +++++++++++ Add this cookie here ::
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2']
+}));
+
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
@@ -58,23 +75,93 @@ app.use("/api/favourites", favouritesRoutes(db));
 // Separate them into separate routes files (see above).
 
 
+
+
+
+
+const users = {
+  userRandomID: {
+    email: "user@example.com",
+    password: "purple-monkey-dinosaur",
+  },
+  user2RandomID: {
+    email: "user2@example.com",
+    password: "dishwasher-funk",
+  },
+};
+
+
+
+
+
 app.get("/", (req, res) => {
-  res.render("index", res);
+  const user = req.session.id;
+
+  res.render("index", {user: user});
 });
+
+
+
+
+
 
 app.get("/login", (req, res) => {
+  const user = req.session.id;
 
-  
-
-
-  res.render("login");
+  res.render("login", {user: user});
 });
+
+
+app.post("/login", (req, res) => {
+  const body = req.body;
+
+  req.session.id = body.email;
+
+  res.redirect("/");
+});
+
+
+
+
 
 app.get("/register", (req, res) => {
-  res.render("register");
+  const user = req.session.id;
+
+  res.render("register", {user: user});
 });
 
+
+
+app.post("/register", (req, res) => {
+
+  const newUser = {
+    email: req.body.email,
+    password: req.body.password,
+  };
+
+  users["newUserId"] = newUser;
+
+  res.redirect("/login");
+});
+
+
+
+
+// LogOut ::
+app.post("/logout", (req, res) => {
+  req.session = null;
+
+  res.redirect("/");
+});
+
+
+
+
+
 app.get("/createmap", (req, res) => {
+
+
+
   res.render("createmap");
 });
 
