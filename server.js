@@ -38,11 +38,11 @@ app.use(express.static("public"));
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
-const widgetsRoutes = require("./routes/widgets");
+const widgetsRoutes = require("./routes/maps");
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
-app.use("/api/widgets", widgetsRoutes(db));
+app.use("/api/maps", widgetsRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -50,36 +50,7 @@ app.use("/api/widgets", widgetsRoutes(db));
 // Separate them into separate routes files (see above).
 
 
-// app.get('/', (req, res) => {
-//   db.query('SELECT * FROM users ', (err, res) => {
-//     if (err) {
-//       //handle error
-//     }
-//     db.end();
-//     res.render('result', { users: res.rows[0] });
-//   });
-// });
-
-
-
 app.get("/", (req, res) => {
-
-  //////////////////////////////
-  // const values = [4];
-  // const queryString = `SELECT email FROM users LIMIT = $1`
-  // db.query(queryString, values)
-  //   .then(res => {
-  //     console.log(res.rows)
-  //     if (res) {
-  //       return res.rows.email;
-  //     }
-  //     else {
-  //       console.log("null");
-  //       return null;
-  //     }
-  //   })
-  //   .catch(err => console.error('query error', err.stack)
-  //   )
   res.render("index", res);
 });
 
