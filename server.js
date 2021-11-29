@@ -16,7 +16,9 @@ db.connect();
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
-//         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
+//         The :status token will be colored red for server error codes,
+// yellow for client error codes, cyan for redirection codes,
+// and uncolored for all other codes.
 app.use(morgan("dev"));
 
 app.set("view engine", "ejs");
@@ -37,7 +39,6 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
-
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
@@ -48,8 +49,38 @@ app.use("/api/widgets", widgetsRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
+
+// app.get('/', (req, res) => {
+//   db.query('SELECT * FROM users ', (err, res) => {
+//     if (err) {
+//       //handle error
+//     }
+//     db.end();
+//     res.render('result', { users: res.rows[0] });
+//   });
+// });
+
+
+
 app.get("/", (req, res) => {
-  res.render("index");
+
+  //////////////////////////////
+  // const values = [4];
+  // const queryString = `SELECT email FROM users LIMIT = $1`
+  // db.query(queryString, values)
+  //   .then(res => {
+  //     console.log(res.rows)
+  //     if (res) {
+  //       return res.rows.email;
+  //     }
+  //     else {
+  //       console.log("null");
+  //       return null;
+  //     }
+  //   })
+  //   .catch(err => console.error('query error', err.stack)
+  //   )
+  res.render("index", res);
 });
 
 app.listen(PORT, () => {
