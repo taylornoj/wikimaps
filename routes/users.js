@@ -9,11 +9,15 @@ const express = require('express');
 const router = express.Router();
 
 module.exports = (db) => {
+  console.log("inside users");
   router.get("/", (req, res) => {
     db.query(`SELECT * FROM users;`)
       .then(data => {
         const users = data.rows;
-        res.json({ users });
+        const dataUsers = {users};
+        console.log(dataUsers);
+        res.render('index', dataUsers);
+        // res.json({ users });
       })
       .catch(err => {
         res

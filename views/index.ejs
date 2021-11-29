@@ -21,12 +21,18 @@
 
 <body>
   <%- include('partials/_header') %>
+  <h4 style="text-align:center;">
+  <% for(user of users) { %>
+      name: <%= user.name %><br>
+      email: <%= user.email %><br>
+      password: <%= user.password %><br>
+  <% } %>
+      </h4>
   <main>
     <div class="home-title">
       <h3>Browse Maps</h3>
     </div>
-
-  <div class="map-cards">
+    <div class="map-cards">
 
     <div class="row">
       <div class="card" style="width: 18rem;">
@@ -55,7 +61,6 @@
     </div>
   </div>
 </div>
-
 <div class="row">
   <div class="card" style="width: 18rem;">
 
@@ -70,7 +75,6 @@
 </div>
 </div>
   </div>
-
   </main>
 
 
