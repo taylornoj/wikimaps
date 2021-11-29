@@ -17,8 +17,6 @@
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
-
-
 </head>
 
 <body>
@@ -43,7 +41,6 @@
       </div>
     </div>
   </div>
-
 
   <div class="row">
     <div class="card" style="width: 18rem;">
@@ -122,12 +119,13 @@
     const map4 = new google.maps.Map(document.getElementById("map4"), coordsCasablanca);
   }
 </script>
-<script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFDKNEPIGZWJq1f4KhwZYftX7uWbzBi-c&callback=initMap">
-</script>
 
 <!-- FINISH TEST API-->
 
+  </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.API_KEY %>&callback=initMap">
+    </script>
 </body>
 
 </html>
