@@ -5,7 +5,7 @@ form {
   padding: 2em;
   border: 2px solid gray;
   margin-top: 4em;
-  margin-left: 2em;
+  // margin-left: 2em;
 }
 
 
@@ -17,4 +17,9 @@ form {
 .map-container {
   display: flex;
   float: right;
+}
+
+.create-pin-maps {
+  display: flex;
+  justify-content: space-around;
 }
