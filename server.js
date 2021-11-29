@@ -78,7 +78,10 @@ app.get("/createmap", (req, res) => {
   res.render("createmap");
 });
 
+
+
 app.get("/maps", (req, res) => {
+
   res.render("maps_index");
 });
 
