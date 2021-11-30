@@ -1,7 +1,7 @@
-.navbar {
-  padding-right: 5em;
-  padding-left: 5em;
-}
+// .navbar {
+//   padding-right: 5em;
+//   padding-left: 5em;
+// }
 
 .navbar-brand {
   color: antiquewhite;
@@ -20,4 +20,28 @@
       font-size: large;
     }
   }
+}
+
+.logout-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border: none;
+}
+
+.logged-in-as {
+  margin-top: 7px;
+  margin-right: 10px;
+  color: aliceblue;
+}
+
+.create-and-my-maps {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.create-a-map {
+  padding-right: 10px;
 }

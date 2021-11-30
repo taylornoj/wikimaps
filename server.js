@@ -162,10 +162,9 @@ app.post("/logout", (req, res) => {
 
 
 app.get("/createmap", (req, res) => {
+  const user = req.session.id;
 
-
-
-  res.render("createmap");
+  res.render("createmap", {user: user});
 });
 
 

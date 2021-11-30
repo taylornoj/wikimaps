@@ -1,3 +1,5 @@
+
+
 <header>
 <nav class="navbar navbar-expand-lg " style="background-color: #0b8be6;">
   <div class="container-fluid">
@@ -5,44 +7,51 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
+
     <div class="collapse navbar-collapse" id="navbarNav">
-      <!-- <div class="navbar-nav">
-        <a class="nav-item nav-link" href="/">My Maps</a>
-        <a class="nav-item nav-link" href="/createmap">Create a New Map</a>
-        </div>
+
+
+        <!-- <div class="navbar-nav">
+          <a class="nav-item nav-link" href="/">My Maps</a>
+          <a class="nav-item nav-link" href="/createmap">Create a New Map</a>
         </div> -->
+    </div>
 
 
 
 
         <% if (user) { %>
-          <label>Logged in As: <%= user %></label>
+          <div class="logout-button">
+            <div class="logged-in-as">
+              <span>Logged in As: <%= user %></span>
+            </div>
+            <div>
+              <form method="POST" action="/logout">
+                <button class="btn btn-primary" name="username">
+                  Logout
+                </button>
+              </form>
+            </div>
+          </div>
 
-          <form method="POST" action="/logout">
-            <button class="btn btn-success btn-outline-dark" name="username">
-              Logout
-            </button>
-          </form>
-          <% } else { %>
+        <% } else { %>
+
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-item nav-link" href="/register" style="margin: 1em">Register</a>
+              <a class="nav-item nav-link" href="/login" style="margin: 1em">Login</a>
+            </div>
+          </div>
+
+        <% } %>
+
+  <!-- </div> -->
 
 
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-item nav-link" href="/register" style="margin: 1em">Register</a>
-          <a class="nav-item nav-link" href="/login" style="margin: 1em">Login</a>
-        </div>
-    </div>
-
-    <% } %>
-
-  </div>
 
 
 </nav>
-
-
-
-
 
 
 
