@@ -40,27 +40,25 @@
 
     <div class="create-pin-maps">
       <div class="create-form">
-        <form class="form-class" action="" method="">
+        <form class="form-class" action="/createmap" method="POST">
           <div class="form-element">
             <h4>Create your Map</h4>
-            <label for="mapTitle" class="form-label">Map Title:</label>
-            <input type="text" class="form-control" id="map-title" placeholder="Map title">
+            <label for="title" class="form-label">Map Title:</label>
+            <input type="text" class="form-control" id="map-title" name="title" placeholder="Map title">
           </div>
           <div class="form-element">
-            <label for="mapDescription" class="form-label">Map Description:</label>
-            <textarea type="text" class="form-control" id="map-description" placeholder="Description of your map..."></textarea>
+            <label for="Description" class="form-label">Map Description:</label>
+            <textarea type="text" class="form-control" id="map-description" name="description" placeholder="Description of your map..."></textarea>
 
             <div>
               <label for="longitude" class="form-label">Longitude:</label>
-              <input type="text" class="form-control" id="longitude" placeholder="Longitude"></input>
+              <input type="text" class="form-control" id="longitude" name="longitude" placeholder="Longitude"></input>
             </div>
 
             <div>
               <label for="latitude" class="form-label">Latitude:</label>
-              <input type="text" class="form-control" id="latitude" placeholder="Latitude"></input>
+              <input type="text" class="form-control" id="latitude" name="latitude" placeholder="Latitude"></input>
             </div>
-
-
             <br>
             <button type="submit" class="btn btn-primary">Create Map</button>
           </form>
