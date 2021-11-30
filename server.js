@@ -6,7 +6,7 @@ require("dotenv").config();
 
 
 // Install the cookie-session ::
-// npm install cookie-session
+// npm install cookie-session ::
 const cookieSession = require('cookie-session');
 
 
@@ -78,7 +78,7 @@ app.use("/api/favourites", favouritesRoutes(db));
 
 
 
-
+// Delete after DB works ::
 const users = {
   userRandomID: {
     email: "user@example.com",

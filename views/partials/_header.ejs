@@ -16,6 +16,8 @@
 
 
         <% if (user) { %>
+          <label>Logged in As: <%= user %></label>
+
           <form method="POST" action="/logout">
             <button class="btn btn-success btn-outline-dark" name="username">
               Logout
