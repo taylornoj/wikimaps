@@ -96,7 +96,6 @@ const users = {
 
 app.get("/", (req, res) => {
   const user = req.session.id;
-
   res.render("index", {user: user});
 });
 
@@ -107,19 +106,13 @@ app.get("/", (req, res) => {
 
 app.get("/login", (req, res) => {
   const user = req.session.id;
-
   res.render("login", {user: user});
 });
 
 
-
-
-
 app.post("/login", (req, res) => {
   const body = req.body;
-
   req.session.id = body.email;
-
   res.redirect("/");
 });
 
@@ -129,23 +122,19 @@ app.post("/login", (req, res) => {
 
 app.get("/register", (req, res) => {
   const user = req.session.id;
-
   res.render("register", {user: user});
 });
 
 
-
 app.post("/register", (req, res) => {
-
   const newUser = {
     email: req.body.email,
     password: req.body.password,
   };
-
   users["newUserId"] = newUser;
-
   res.redirect("/login");
 });
+
 
 
 
@@ -153,7 +142,6 @@ app.post("/register", (req, res) => {
 // LogOut ::
 app.post("/logout", (req, res) => {
   req.session = null;
-
   res.redirect("/");
 });
 
@@ -163,16 +151,21 @@ app.post("/logout", (req, res) => {
 
 app.get("/createmap", (req, res) => {
   const user = req.session.id;
-
   res.render("createmap", {user: user});
 });
 
 
 
-app.get("/maps", (req, res) => {
 
-  res.render("maps_index");
+
+app.get("/maps", (req, res) => {
+  const user = req.session.id;
+  res.render("maps_index", {user: user});
 });
+
+
+
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
