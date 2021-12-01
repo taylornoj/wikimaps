@@ -168,7 +168,8 @@ app.get("/", (req, res) => {
     templateVars = { user }
     res.render("index", templateVars);
   }
-  res.render("login", templateVars);
+  // res.render("login", templateVars);
+  res.redirect("/maps");
 });
 
 
@@ -218,6 +219,7 @@ app.get("/login", (req, res) => {
 app.post("/login", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
+
   login(email, password)
   .then(user => {
     if(user) {
@@ -225,6 +227,7 @@ app.post("/login", (req, res) => {
       res.redirect("/");
     }
     else {
+      const user = {email: null}
       const templateVars = { user }
       res.render('login', templateVars);
       }
@@ -269,11 +272,11 @@ app.post("/logout", (req, res) => {
 app.get("/createmap", (req, res) => {
   const email = req.session.email;
   const user = {email: email}
-  if(user){
+  if(email){
     res.render("createmap", { user });
   }
   else{
-    res.render("login");
+    res.redirect("/maps");
   }
 });
 
@@ -286,7 +289,8 @@ app.get("/maps", (req, res) => {
     res.render("maps_index", { user });
   }
   else {
-    res.render("login");
+    res.render("/maps");
+    // res.render("login");
   }
 
 });
@@ -301,6 +305,7 @@ app.post("/createmap" , (req, res) => {
   const longitude = req.body.longitude;
   const latitude = req.body.latitude;
   // const created_on = Date().now();
+  //  search for
   const user_id = 51;
   db.query(`
   INSERT INTO maps (title, description, longitude, latitude, created_on, user_id)
