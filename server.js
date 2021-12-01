@@ -185,11 +185,36 @@ app.post("/createmap" , (req, res) => {
 
 
 
+
+
+
+
 app.get("/edit_map", (req, res) => {
   const user = req.session.id;
   res.render("edit_map", {user: user});
 });
 
+
+
+
+
+app.post("/edit_map", (req, res) => {
+
+  const title = req.body.title;
+  const description = req.body.description;
+  const longitude = req.body.longitude;
+  const latitude = req.body.latitude;
+  // const created_on = Date().now();
+  const user_id = 1;
+
+  db.query(`UPDATE maps (title, description, longitude, latitude, created_on, user_id)
+  SET ($1, $2, $3, $4, $5, $6)
+  RETURNING *;`,
+  [title, description, longitude, latitude, '2021-03-11 09:30:00',  user_id])
+    .then((result) => result.rows[0])
+    .catch((err) => console.log(err.message));
+  res.redirect("/maps");
+});
 
 
 

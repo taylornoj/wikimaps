@@ -42,26 +42,26 @@
 
 
           <div class="pin-element">
-            <form class="form-class" action="" method="">
+            <form class="form-class" action="/edit_map" method="POST">
               <h4>Edit a Marker 📍</h4>
               <label for="pinTitle" class="form-label">Edit Marker Title:</label>
-              <input type="text" class="form-control" id="pin-title" placeholder="Edit marker title">
+              <input name="title" type="text" class="form-control" id="pin-title" placeholder="Edit marker title">
               <div class="form-element">
                 <label for="pinDescription" class="form-label">Edit Marker Description:</label>
-                <textarea type="text" class="form-control" id="pin-description" placeholder="Edit description of your Marker..."></textarea>
+                <textarea name="Description" type="text" class="form-control" id="pin-description" placeholder="Edit description of your Marker..."></textarea>
               </div>
               <div class="form-element">
                 <label for="pinPicture" class="form-label">Edit Marker Picture:</label>
-                <input type="text" class="form-control" id="pin-img" placeholder="Enter Image URL">
+                <input name="url" type="text" class="form-control" id="pin-img" placeholder="Enter Image URL">
 
                 <div>
                   <label for="longitude" class="form-label">Longitude:</label>
-                  <input type="text" class="form-control" id="longitude" placeholder="Longitude"></input>
+                  <input name="longitude" type="text" class="form-control" id="longitude" placeholder="Longitude"></input>
                 </div>
 
                 <div>
                   <label for="latitude" class="form-label">Latitude:</label>
-                  <input type="text" class="form-control" id="latitude" placeholder="Latitude"></input>
+                  <input name="latitude" type="text" class="form-control" id="latitude" placeholder="Latitude"></input>
                 </div>
                 <br>
                 <button type="submit" class="btn btn-primary">Edit Marker</button>
