@@ -17,6 +17,7 @@
 
      <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
      <script type="text/javascript" src="/scripts/app.js"></script>
+     <script type="text/javascript" src="/scripts/helperfunction.js"></script>
 
    </head>
 <body>
@@ -40,22 +41,8 @@
         <a href="#" class="btn btn-primary">Edit</a>
 
         <div class="heart-container">
-          <i onclick="Toggle()" id="btn" class="far fa-heart"></i>
+          <i class="far fa-heart"></i>
         </div>
-        <script>
-          let btn = document.getElementById('btn');
-
-          function Toggle(){
-            if(btn.classList.contains("far")) {
-              btn.classList.remove("far");
-              btn.classList.add("fas");
-            } else {
-              btn.classList.remove("fas");
-              btn.classList.add("far");
-            }
-          }
-        </script>
-
         <a href="#" class="btn btn-danger">Delete</a>
         </div>
       </div>
@@ -74,23 +61,9 @@
         <a href="#" class="btn btn-primary">Edit</a>
 
         <div class="heart-container">
-          <i onclick="Toggle()" id="btn" class="far fa-heart"></i>
+          <i class="far fa-heart"></i>
         </div>
-        <script>
-          let btn = document.getElementById('btn');
-
-          function Toggle(){
-            if(btn.classList.contains("far")) {
-              btn.classList.remove("far");
-              btn.classList.add("fas");
-            } else {
-              btn.classList.remove("fas");
-              btn.classList.add("far");
-            }
-          }
-        </script>
-
-        <a href="#" class="btn btn-danger">Delete</a>
+          <a href="#" class="btn btn-danger">Delete</a>
       </div>
     </div>
   </div>
@@ -108,23 +81,9 @@
       <a href="#" class="btn btn-primary">Edit</a>
 
       <div class="heart-container">
-        <i onclick="Toggle()" id="btn" class="far fa-heart"></i>
+        <i class="far fa-heart"></i>
       </div>
-      <script>
-        let btn = document.getElementById('btn');
-
-        function Toggle(){
-          if(btn.classList.contains("far")) {
-            btn.classList.remove("far");
-            btn.classList.add("fas");
-          } else {
-            btn.classList.remove("fas");
-            btn.classList.add("far");
-          }
-        }
-      </script>
-
-      <a href="#" class="btn btn-danger">Delete</a>
+        <a href="#" class="btn btn-danger">Delete</a>
     </div>
 
   </div>
