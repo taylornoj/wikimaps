@@ -42,6 +42,7 @@
         <div class="heart-container">
           <i onclick="Toggle()" id="btn" class="far fa-heart"></i>
         </div>
+
         <script>
           let btn = document.getElementById('btn');
 
@@ -53,7 +54,9 @@
           }
         </script>
 
-        <a href="#" class="btn btn-danger">Delete</a>
+          <form method="POST" action="/delete">
+            <button class="btn btn-danger" type="submit">Delete</button>
+          </form>
         </div>
       </div>
     </div>
@@ -68,7 +71,7 @@
       <h5 class="card-title">Card title</h5>
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       <div class="mapbuttons">
-        <a href="#" class="btn btn-primary">Edit</a>
+        <a href="edit_map" class="btn btn-primary">Edit</a>
 
         <div class="heart-container">
           <i onclick="Toggle()" id="btn" class="far fa-heart"></i>
@@ -84,7 +87,9 @@
           }
         </script>
 
-        <a href="#" class="btn btn-danger">Delete</a>
+        <form method="POST" action="/delete">
+          <button class="btn btn-danger" type="submit">Delete</button>
+        </form>
       </div>
     </div>
   </div>
@@ -99,7 +104,7 @@
     <h5 class="card-title">Card title</h5>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     <div class="mapbuttons">
-      <a href="#" class="btn btn-primary">Edit</a>
+      <a href="edit_map" class="btn btn-primary">Edit</a>
 
       <div class="heart-container">
         <i onclick="Toggle()" id="btn" class="far fa-heart"></i>
@@ -115,7 +120,9 @@
         }
       </script>
 
-      <a href="#" class="btn btn-danger">Delete</a>
+        <form method="POST" action="/delete">
+          <button class="btn btn-danger" type="submit">Delete</button>
+        </form>
     </div>
 
   </div>

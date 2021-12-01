@@ -164,6 +164,9 @@ app.get("/maps", (req, res) => {
 });
 
 
+
+
+
 app.post("/createmap" , (req, res) => {
   console.log("title", req.body.title);
   const title = req.body.title;
@@ -216,6 +219,17 @@ app.post("/edit_map", (req, res) => {
   res.redirect("/maps");
 });
 
+
+
+
+
+
+app.post("/delete", (req, res) => {
+
+  // Need to add a code to delete
+
+  res.redirect("/maps");
+});
 
 
 
