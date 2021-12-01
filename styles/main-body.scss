@@ -20,6 +20,12 @@
 .btn {
   display: flex;
   align-items: center;
+  text-align: center;
+}
+
+.btn-primary {
+  text-align: center;
+  display: table-cell;
 }
 
 .mapbuttons {

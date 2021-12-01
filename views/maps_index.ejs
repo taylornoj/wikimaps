@@ -17,6 +17,7 @@
 
      <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
      <script type="text/javascript" src="/scripts/app.js"></script>
+     <script type="text/javascript" src="/scripts/helperfunction.js"></script>
 
    </head>
 <body>
@@ -40,9 +41,9 @@
         <a href="edit_map" class="btn btn-primary">Edit</a>
 
         <div class="heart-container">
-          <i onclick="Toggle()" id="btn" class="far fa-heart"></i>
+          <i class="far fa-heart"></i>
         </div>
-        
+
         <script>
           let btn = document.getElementById('btn');
 
@@ -57,6 +58,7 @@
           <form method="POST" action="/delete">
             <button class="btn btn-danger" type="submit">Delete</button>
           </form>
+
         </div>
       </div>
     </div>
@@ -74,7 +76,7 @@
         <a href="edit_map" class="btn btn-primary">Edit</a>
 
         <div class="heart-container">
-          <i onclick="Toggle()" id="btn" class="far fa-heart"></i>
+          <i class="far fa-heart"></i>
         </div>
         <script>
           let btn = document.getElementById('btn');
@@ -107,7 +109,7 @@
       <a href="edit_map" class="btn btn-primary">Edit</a>
 
       <div class="heart-container">
-        <i onclick="Toggle()" id="btn" class="far fa-heart"></i>
+        <i class="far fa-heart"></i>
       </div>
       <script>
         let btn = document.getElementById('btn');
