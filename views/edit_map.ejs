@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+  <title>Create a Map</title>
+
+
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/createmap.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
+
+
+
+
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+
+</head>
+
+<body>
+
+
+
+  <%- include('partials/_header') %>
+
+
+
+
+
+  <main>
+
+
+    <div id="map1" style="width: 100%; height: 300px"></div>
+
+
+
+          <div class="pin-element">
+            <form class="form-class" action="" method="">
+              <h4>Edit a Marker 📍</h4>
+              <label for="pinTitle" class="form-label">Edit Marker Title:</label>
+              <input type="text" class="form-control" id="pin-title" placeholder="Edit marker title">
+              <div class="form-element">
+                <label for="pinDescription" class="form-label">Edit Marker Description:</label>
+                <textarea type="text" class="form-control" id="pin-description" placeholder="Edit description of your Marker..."></textarea>
+              </div>
+              <div class="form-element">
+                <label for="pinPicture" class="form-label">Edit Marker Picture:</label>
+                <input type="text" class="form-control" id="pin-img" placeholder="Enter Image URL">
+
+                <div>
+                  <label for="longitude" class="form-label">Longitude:</label>
+                  <input type="text" class="form-control" id="longitude" placeholder="Longitude"></input>
+                </div>
+
+                <div>
+                  <label for="latitude" class="form-label">Latitude:</label>
+                  <input type="text" class="form-control" id="latitude" placeholder="Latitude"></input>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Edit Marker</button>
+              </div>
+            </div>
+          </form>
+
+
+  </main>
+
+
+
+
+
+
+
+
+
+
+
+<!-- TEST API -->
+<div class="row">
+  <div class="col-3">
+    <div id="map1"></div>
+  </div>
+  <div class="col-3">
+    <div id="map2"></div>
+  </div>
+  <div class="col-3">
+    <div id="map3"></div>
+  </div>
+  <div class="col-3">
+    <div id="map4"></div>
+  </div>
+</div>
+
+<script>
+  function initMap() {
+    const zoom = 5;
+    const lat_long_Ottawa = { lat: 45.424721, lng: -75.695000 };
+    const lat_long_Toronto = { lat: 43.651070,lng: -79.347015 };
+    const lat_long_Moscow = { lat: 55.751244, lng: 37.618423 };
+    const lat_long_Casablanca = { lat: 33.589886, lng: -7.603869 };
+    const coordsOttawa = {
+      zoom: zoom,
+      center: lat_long_Ottawa
+    };
+    const map1 = new google.maps.Map(document.getElementById("map1"), coordsOttawa);
+    const coordsToronto = {
+      zoom: zoom,
+      center: lat_long_Toronto
+    }
+    const map2 = new google.maps.Map(document.getElementById("map2"), coordsToronto);
+    const coordsMoscow = {
+      zoom: zoom,
+      center: lat_long_Moscow
+    }
+    const map3 = new google.maps.Map(document.getElementById("map3"), coordsMoscow);
+    const coordsCasablanca = {
+      zoom: zoom,
+      center: lat_long_Casablanca
+    }
+    const map4 = new google.maps.Map(document.getElementById("map4"), coordsCasablanca);
+  }
+</script>
+
+<!-- FINISH TEST API-->
+
+  </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.API_KEY %>&callback=initMap">
+    </script>
+
+<%- include('partials/_footer') %>
+</body>
+</html>

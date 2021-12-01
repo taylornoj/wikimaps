@@ -184,6 +184,18 @@ app.post("/createmap" , (req, res) => {
 
 
 
+
+app.get("/edit_map", (req, res) => {
+  const user = req.session.id;
+  res.render("edit_map", {user: user});
+});
+
+
+
+
+
+
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
