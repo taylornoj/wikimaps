@@ -43,7 +43,6 @@ app.use(
 app.use(express.static("public"));
 
 
-// +++++++++++ Add this cookie here ::
 app.use(cookieSession({
   name: 'session',
   keys: ['key1', 'key2']
@@ -89,7 +88,28 @@ const getUserByEmailAndPassword = function(email, password) {
     })
 
 };
-/////////////////////////////////////////////
+
+const getUserByEmailAndHisMaps = function (email) {
+  return db.query(`
+  SELECT users.email,
+  maps.title,
+  maps.description,
+  maps.longitude, maps.latitude
+  FROM users JOIN maps
+  ON users.id = maps.user_id
+  WHERE email = $1;`, [email])
+    .then(data => {
+      if (data.rowCount === 0) {
+        return null;
+      }
+      return data.rows;
+    })
+    .catch(err => {
+      console.error(err);
+    })
+};
+
+
 const getUserByEmail = function (email) {
   return db.query(`SELECT * FROM users WHERE email = $1;`, [email])
     .then(data => {
@@ -102,6 +122,16 @@ const getUserByEmail = function (email) {
       console.error(err);
     })
 };
+
+const getUserByEmailAndHisMapsPromise = function (email) {
+  return getUserByEmailAndHisMaps(email)
+    .then(data => {
+      if (data) {
+        return data;
+      }
+      return null
+    });
+}
 
 
 const getUserByEmailPromise = function (email) {
@@ -129,8 +159,17 @@ const getMapsByUserId = (id) => {
   let maps = null;
   db.query(`SELECT * FROM maps WHERE user_id = $1;`, values)
     .then(data => {
-      const maps  = data.rows[0];
-      return maps;
+      const maps = data.rows[0];
+      // return maps;
+      // const maps  = data.rows;
+      // let templateVars = {
+      //   user, maps
+      // };
+      let templateVars = {
+         maps
+      };
+      // res.render("map_user", templateVars);
+      // return maps;
     })
     .catch(err => {
       console.error(err);
@@ -146,46 +185,38 @@ const getMapsByUserId = (id) => {
 
 app.get("/", (req, res) => {
   const email = req.session.email;
-  console.log("email inside /", email);
   user = {email: email};
   templateVars = {user};
-  if(email){
+  if(!email){
      user = { email: email }
     templateVars = { user }
     res.render("index", templateVars);
   }
-  // res.render("login", templateVars);
   res.redirect("/maps");
+
 });
 
 app.get("/map_user", (req, res) => {
   const email = req.session.email;
-/////////////////////////////////
-
-  const user = getUserByEmailPromise(email)
-    .then(user => {
-      if (user) {
+  getUserByEmailAndHisMapsPromise(email)
+    .then(maps => {
+      let user = {email: maps[0].email};
+      let templateVars;
+      if (maps) {
+        templateVars = {
+          user, maps
+        };
+        res.render("map_user", templateVars);
         // res.redirect("/");
-        return user
+        // return user
       }
       else {
         const templateVars = { user }
         res.render('login', templateVars);
       }
     })
-    console.log("user after call promise inside map_user", user);
 
-///////////////////////////////////
-
-  maps = getMapsByUserId(user.id);
-  // get the user if he exists or null if not
-  let templateVars = {
-    user, maps
-  };
-   res.render("map_user", templateVars);
 });
-
-
 
 app.get("/login", (req, res) => {
   const email = req.session.email;
@@ -286,12 +317,11 @@ app.post("/createmap" , (req, res) => {
 
 
   const email = req.session.email;
-  const user = getUserByEmailPromise(email)
+  // const user = getUserByEmailPromise(email)
   getUserByEmailPromise(email)
     .then(user => {
       if (user) {
         // res.redirect("/");
-        console.log("inside promise ", user);
         user_id = user.id;
         createMapForUser(user_id, title, description, longitude, latitude);
         return user;
@@ -306,12 +336,6 @@ app.post("/createmap" , (req, res) => {
     })
 
   const createMapForUser = function (user_id, title, description, longitude, latitude) {
-    // const title = req.body.title;
-    // const description = req.body.description;
-    // const longitude = req.body.longitude;
-    // const latitude = req.body.latitude;
-    // const created_on = Date().now();
-    //  search for maps of this user
     db.query(`
     INSERT INTO maps (title, description, longitude, latitude, created_on, user_id)
     VALUES ($1, $2, $3, $4, $5, $6)
@@ -328,21 +352,10 @@ app.get("/index", (req, res) => {
   console.log("req", req.params)
 });
 
-
-
-
-
-
-
-
 app.get("/edit_map", (req, res) => {
   const user = req.session.id;
   res.render("edit_map", {user: user});
 });
-
-
-
-
 
 app.post("/edit_map", (req, res) => {
 
@@ -362,21 +375,12 @@ app.post("/edit_map", (req, res) => {
   res.redirect("/maps");
 });
 
-
-
-
-
-
 app.post("/delete", (req, res) => {
 
   // Need to add a code to delete
 
   res.redirect("/maps");
 });
-
-
-
-
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

@@ -24,20 +24,52 @@
 <body>
     <main>
   <%- include('partials/_header') %>
-    <main>
       <div class="home-title">
         <h3>My Maps</h3>
       </div>
+      <main style="display: flex; justify-content: space-around;">
 
-      <div class="map-cards">
+      <div id="map-card1" >
         <div class="row">
           <div class="card" style="width: 18rem;">
 
             <div id="map1" style="width: 100%; height: 300px"></div>
 
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              <h5 id="card-title1">Card title</h5>
+              <p id="card-text1">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+              <div class="mapbuttons">
+                <a href="#" class="btn btn-primary">Edit</a>
+
+                <div class="heart-container">
+                  <i onclick="Toggle()" id="btn" class="far fa-heart"></i>
+                </div>
+                <script>
+                  let btn = document.getElementById('btn');
+
+                  function Toggle() {
+                    if (btn.classList.contains("far")) {
+                      btn.classList.remove("far");
+                      btn.classList.add("fas");
+                    }
+                  }
+                </script>
+                <a href="#" class="btn btn-danger">Delete</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="map-card2">
+        <div class="row">
+          <div class="card" style="width: 18rem;">
+
+            <div id="map2" style="width: 100%; height: 300px"></div>
+
+            <div class="card-body">
+              <h5 id="card-title2">Card title</h5>
+              <p id="card-text2">Some quick example text to build on the card title and make up the bulk of the card's
                 content.</p>
               <div class="mapbuttons">
                 <a href="#" class="btn btn-primary">Edit</a>
@@ -61,34 +93,147 @@
             </div>
           </div>
         </div>
+      </div>
+      <div id="map-card3">
+        <div class="row">
+          <div class="card" style="width: 18rem;">
+
+            <div id="map3" style="width: 100%; height: 300px"></div>
+
+            <div class="card-body">
+              <h5 id="card-title3">Card title</h5>
+              <p id="card-text3">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+              <div class="mapbuttons">
+                <a href="#" class="btn btn-primary">Edit</a>
+
+                <div class="heart-container">
+                  <i onclick="Toggle()" id="btn" class="far fa-heart"></i>
+                </div>
+                <script>
+                  let btn = document.getElementById('btn');
+
+                  function Toggle() {
+                    if (btn.classList.contains("far")) {
+                      btn.classList.remove("far");
+                      btn.classList.add("fas");
+                    }
+                  }
+                </script>
+
+                <a href="#" class="btn btn-danger">Delete</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="map-card4">
+        <div class="row">
+          <div class="card" style="width: 18rem;">
+
+            <div id="map4" style="width: 100%; height: 300px"></div>
+
+            <div class="card-body">
+              <h5 id="card-title4">Card title</h5>
+              <p id="card-text4">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+              <div class="mapbuttons">
+                <a href="#" class="btn btn-primary">Edit</a>
+
+                <div class="heart-container">
+                  <i onclick="Toggle()" id="btn" class="far fa-heart"></i>
+                </div>
+                <script>
+                  let btn = document.getElementById('btn');
+
+                  function Toggle() {
+                    if (btn.classList.contains("far")) {
+                      btn.classList.remove("far");
+                      btn.classList.add("fas");
+                    }
+                  }
+                </script>
+
+                <a href="#" class="btn btn-danger">Delete</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
 <script>
   function initMap() {
+
     const zoom = 5;
-    const lat_long_Ottawa = { lat: 45.424721, lng: -75.695000 };
-    const lat_long_Toronto = { lat: 43.651070, lng: -79.347015 };
-    const lat_long_Moscow = { lat: 55.751244, lng: 37.618423 };
-    const lat_long_Casablanca = { lat: 33.589886, lng: -7.603869 };
-    const coordsOttawa = {
-      zoom: zoom,
-      center: lat_long_Ottawa
-    };
-    const map1 = new google.maps.Map(document.getElementById("map1"), coordsOttawa);
-    const coordsToronto = {
-      zoom: zoom,
-      center: lat_long_Toronto
-    }
-    const map2 = new google.maps.Map(document.getElementById("map2"), coordsToronto);
-    const coordsMoscow = {
-      zoom: zoom,
-      center: lat_long_Moscow
-    }
-    const map3 = new google.maps.Map(document.getElementById("map3"), coordsMoscow);
-    const coordsCasablanca = {
-      zoom: zoom,
-      center: lat_long_Casablanca
-    }
-    const map4 = new google.maps.Map(document.getElementById("map4"), coordsCasablanca);
-  }
+    let lat, lng;
+    let title, description;
+    let coordsMaps;
+    let map;
+    let mapID = 1;
+    let cardTitleID = 'card-title';
+    let cardTextID='card-text';
+    let incrt = 0;
+    <% if(maps.length < 2){ %>
+      document.getElementById('map-card2').style.display = 'none';
+      document.getElementById('map-card3').style.display = 'none';
+      document.getElementById('map-card4').style.display = 'none';
+    <% } %>
+    <% if (maps.length < 3) { %>
+      document.getElementById('map-card3').style.display = 'none';
+      document.getElementById('map-card4').style.display = 'none';
+    <% } %>
+    <% if (maps.length < 4) { %>
+      document.getElementById('map-card4').style.display = 'none';
+    <% } %>
+
+    lat = Number('<%= maps[0].latitude %>');
+    lng = Number('<%= maps[0].longitude %>');
+    coordsMaps = {
+        zoom: zoom,
+        center: { lat, lng }
+      };
+    map = new google.maps.Map(document.getElementById('map1'), coordsMaps);
+    document.getElementById('card-title1').innerHTML = '<%= maps[0].title %>'
+    document.getElementById('card-text1').innerHTML = '<%= maps[0].description %>'
+
+    <% if (maps.length > 1) { %>
+      lat = Number('<%= maps[1].latitude %>');
+      lng = Number('<%= maps[1].longitude %>');
+      coordsMaps = {
+        zoom: zoom,
+        center: { lat, lng }
+      };
+      map = new google.maps.Map(document.getElementById('map2'), coordsMaps);
+      document.getElementById('card-title2').innerHTML = '<%= maps[1].title %>'
+      document.getElementById('card-text2').innerHTML = '<%= maps[1].description %>'
+    <% } %>
+
+    <% if (maps.length > 2) { %>
+      lat = Number('<%= maps[2].latitude %>');
+      lng = Number('<%= maps[2].longitude %>');
+      coordsMaps = {
+        zoom: zoom,
+        center: { lat, lng }
+      };
+      map = new google.maps.Map(document.getElementById('map3'), coordsMaps);
+      document.getElementById('card-title3').innerHTML = '<%= maps[2].title %>'
+      document.getElementById('card-text3').innerHTML = '<%= maps[2].description %>'
+        <% } %>
+
+    <% if (maps.length > 3) { %>
+      lat = Number('<%= maps[3].latitude %>');
+      lng = Number('<%= maps[3].longitude %>');
+      coordsMaps = {
+        zoom: zoom,
+        center: { lat, lng }
+      };
+      map = new google.maps.Map(document.getElementById('map4'), coordsMaps);
+      document.getElementById('card-title4').innerHTML = '<%= maps[3].title %>'
+      document.getElementById('card-text4').innerHTML = '<%= maps[3].description %>'
+        <% } %>
+
+}
 </script>
 
 <!-- FINISH TEST API-->
