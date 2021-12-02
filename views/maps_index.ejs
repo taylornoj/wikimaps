@@ -27,16 +27,20 @@
     <h3>My Maps</h3>
   </div>
 
-
     <div class="map-cards">
+
+    <% for(let card in cards) { %>
+
     <div class="row">
       <div class="card" style="width: 18rem;">
 
-        <div id="map1" style="width: 100%; height: 300px"></div>
+        <div class="map-class" data-lon=<%= cards[card].longitude %>
+          data-lat=<%= cards[card].latitude %> id=<%= card %>
+          style="width: 100%; height: 300px"></div>
 
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <h5 class="card-title"><%= cards[card].title %></h5>
+        <p class="card-text"><%= cards[card].description %></p>
         <div class="mapbuttons">
         <a href="edit_map" class="btn btn-primary">Edit</a>
 
@@ -55,7 +59,7 @@
           }
         </script>
 
-          <form method="POST" action="/delete">
+          <form method="POST" action="/delete/<%= cards[card].id %>">
             <button class="btn btn-danger" type="submit">Delete</button>
           </form>
 
@@ -64,73 +68,10 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="card" style="width: 18rem;">
+  <% } %>
 
-      <div id="map2" style="width: 100%; height: 300px"></div>
-
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <div class="mapbuttons">
-        <a href="edit_map" class="btn btn-primary">Edit</a>
-
-        <div class="heart-container">
-          <i class="far fa-heart"></i>
-        </div>
-        <script>
-          let btn = document.getElementById('btn');
-
-          function Toggle(){
-            if(btn.classList.contains("far")) {
-              btn.classList.remove("far");
-              btn.classList.add("fas");
-            }
-          }
-        </script>
-
-        <form method="POST" action="/delete">
-          <button class="btn btn-danger" type="submit">Delete</button>
-        </form>
-      </div>
-    </div>
-  </div>
 </div>
 
-<div class="row">
-  <div class="card" style="width: 18rem;">
-
-    <div id="map3" style="width: 100%; height: 300px"></div>
-
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <div class="mapbuttons">
-      <a href="edit_map" class="btn btn-primary">Edit</a>
-
-      <div class="heart-container">
-        <i class="far fa-heart"></i>
-      </div>
-      <script>
-        let btn = document.getElementById('btn');
-
-        function Toggle(){
-          if(btn.classList.contains("far")) {
-            btn.classList.remove("far");
-            btn.classList.add("fas");
-          }
-        }
-      </script>
-
-        <form method="POST" action="/delete">
-          <button class="btn btn-danger" type="submit">Delete</button>
-        </form>
-    </div>
-
-  </div>
-</div>
-</div>
-</div>
 </main>
 
 
@@ -138,7 +79,7 @@
 
 
 <!-- TEST API -->
-<div class="row">
+<!-- <div class="row">
   <div class="col-3">
     <div id="map1"></div>
   </div>
@@ -151,37 +92,119 @@
   <div class="col-3">
     <div id="map4"></div>
   </div>
-</div>
+</div> -->
 
 <script>
-  function initMap() {
-    const zoom = 5;
-    const lat_long_Ottawa = { lat: 45.424721, lng: -75.695000 };
-    const lat_long_Toronto = { lat: 43.651070,lng: -79.347015 };
-    const lat_long_Moscow = { lat: 55.751244, lng: 37.618423 };
-    const lat_long_Casablanca = { lat: 33.589886, lng: -7.603869 };
-    const coordsOttawa = {
-      zoom: zoom,
-      center: lat_long_Ottawa
-    };
-    const map1 = new google.maps.Map(document.getElementById("map1"), coordsOttawa);
-    const coordsToronto = {
-      zoom: zoom,
-      center: lat_long_Toronto
-    }
-    const map2 = new google.maps.Map(document.getElementById("map2"), coordsToronto);
-    const coordsMoscow = {
-      zoom: zoom,
-      center: lat_long_Moscow
-    }
-    const map3 = new google.maps.Map(document.getElementById("map3"), coordsMoscow);
-    const coordsCasablanca = {
-      zoom: zoom,
-      center: lat_long_Casablanca
-    }
-    const map4 = new google.maps.Map(document.getElementById("map4"), coordsCasablanca);
-  }
+
+
+// const cardInfo = []
+
+
+$(document).ready(function() {
+
+  const maps = $(".map-class")
+
+  maps.each(function(index) {
+    const mapId = $( this ).attr("id")
+    const mapLat = $( this ).attr("data-lon")
+    const mapLon = $( this ).attr("data-lat")
+    initMap(Number(mapLat), Number(mapLon), mapId)
+  });
+
+  });
+
+
+  // Use the jQuery to select all the map containers
+  // Loop over the containers
+  // In each loop you will access lat and lon and id - use jquery
+  // call the initMap to call these three params
+
+
+
+
+
+
+// const coordinates = require("");
+
+// function initMap() {
+//     const zoom = 10;
+//     const lat_long_Ottawa = { lat: 45.424721, lng: -75.695000 };
+//     const lat_long_Toronto = { lat: 43.651070,lng: -79.347015 };
+//     const lat_long_Casablanca = { lat: 33.589886, lng: -7.603869 };
+
+
+//     const coordsOttawa = {
+//       zoom: zoom,
+//       center: lat_long_Ottawa
+//     };
+//     const map1 = new google.maps.Map(document.getElementById("map1"), coordsOttawa);
+
+
+//     const coordsToronto = {
+//       zoom: zoom,
+//       center: lat_long_Toronto
+//     }
+//     const map2 = new google.maps.Map(document.getElementById("map2"), coordsToronto);
+
+
+//     const coordsCasablanca = {
+//       zoom: zoom,
+//       center: lat_long_Casablanca
+//     }
+//     const map3 = new google.maps.Map(document.getElementById("map3"), coordsCasablanca);
+
+
+
+//     const addMarker = (coords, map) => {
+//         new google.maps.Marker({
+//         position: coords,
+//         map: map,
+//       });
+//     }
+
+
+//     addMarker(lat_long_Ottawa, map1)
+//     addMarker(lat_long_Toronto, map2)
+//     addMarker(lat_long_Casablanca, map3)
+
+//   }
+
+
+
+
+
+
+  // function initMap() {
+  //   const zoom = 5;
+  //   const lat_long_Ottawa = { lat: 45.424721, lng: -75.695000 };
+  //   const lat_long_Toronto = { lat: 43.651070,lng: -79.347015 };
+  //   const lat_long_Moscow = { lat: 55.751244, lng: 37.618423 };
+  //   const lat_long_Casablanca = { lat: 33.589886, lng: -7.603869 };
+  //   const coordsOttawa = {
+  //     zoom: zoom,
+  //     center: lat_long_Ottawa
+  //   };
+  //   const map1 = new google.maps.Map(document.getElementById("map1"), coordsOttawa);
+  //   const coordsToronto = {
+  //     zoom: zoom,
+  //     center: lat_long_Toronto
+  //   }
+  //   const map2 = new google.maps.Map(document.getElementById("map2"), coordsToronto);
+  //   const coordsMoscow = {
+  //     zoom: zoom,
+  //     center: lat_long_Moscow
+  //   }
+  //   const map3 = new google.maps.Map(document.getElementById("map3"), coordsMoscow);
+  //   const coordsCasablanca = {
+  //     zoom: zoom,
+  //     center: lat_long_Casablanca
+  //   }
+  //   const map4 = new google.maps.Map(document.getElementById("map4"), coordsCasablanca);
+  // }
 </script>
+
+
+
 
 <!-- FINISH TEST API-->
 
