@@ -173,29 +173,29 @@ const generateRandomString = function() {
 const cardDatabase = {
   b6UTxQ: {
     userID: "aJ48lW",
-    title: "Favourite Parks in Toronto",
+    title: "Roman's Recommended Views",
     description:
-      "Some quick example text to build on the card title and make up the bulk of the card's content.",
-    longitude: 43.65107,
-    latitude: -79.347015,
+      "Check out this map for the best views Casablanca has to offer!",
+    longitude: 33.589886,
+    latitude: -7.603869,
     id: "b6UTxQ"
   },
   b6UTxQ2: {
     userID: "aJ48lW",
-    title: "Favourite Parks in Toronto",
+    title: "Coolest filming locations in Toronto",
     description:
-      "Some quick example text to build on the card title and make up the bulk of the card's content.",
-    longitude: 43.65107,
-    latitude: -79.347015,
+      "Places that movies have been filmed in Toronto.",
+    longitude: 43.6548871759463,
+    latitude: -79.38511745481695,
     id: "b6UTxQ2"
   },
   b6UTxQ3: {
     userID: "aJ48lW",
-    title: "Favourite Parks in Toronto",
+    title: "My favorite coffee shops in London",
     description:
-      "Some quick example text to build on the card title and make up the bulk of the card's content.",
-    longitude: 43.65107,
-    latitude: -79.347015,
+      "Best coffee shops to grab some Java, Mocha or Chai.",
+    longitude: 51.52858919673822,
+    latitude: -0.08181622051423204,
     id: "b6UTxQ3"
   },
 };
@@ -268,6 +268,11 @@ app.post("/edit_map", (req, res) => {
   const latitude = req.body.latitude;
   // const created_on = Date().now();
   const user_id = 1;
+
+
+
+
+
 
   db.query(
     `UPDATE maps (title, description, longitude, latitude, created_on, user_id)

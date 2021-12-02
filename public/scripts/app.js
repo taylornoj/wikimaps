@@ -1,7 +1,7 @@
 // Client facing scripts here
 
 const initMap = function (lat, lng, mapId) {
-  const zoom = 10;
+  const zoom = 12;
   const lat_long_Ottawa = { lat: lat, lng: lng };
 
   const coordsOttawa = {
