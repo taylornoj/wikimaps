@@ -116,6 +116,18 @@ app.post("/logout", (req, res) => {
   res.redirect("/");
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
 ////////////       TESTING!!!! ::::               ////////////////////////////////////
 
 
@@ -188,10 +200,6 @@ const cardDatabase = {
   },
 };
 
-// console.log(cardDatabase.b6UTxQ.longitude);
-
-// const coordinates = cardDatabase.b6UTxQ.longitude
-// module.exports = {coordinates}
 
 app.get("/maps", (req, res) => {
   const user = req.session.id;
@@ -199,6 +207,11 @@ app.get("/maps", (req, res) => {
 });
 
 /////////////////////////////////////////////
+
+
+
+
+
 
 app.get("/createmap", (req, res) => {
   const user = req.session.id;
@@ -224,7 +237,7 @@ app.post("/createmap", (req, res) => {
     latitude,
     id
   }
-  
+
   console.log(cardDatabase);
 
   res.redirect("/maps")
@@ -273,7 +286,6 @@ app.post("/edit_map", (req, res) => {
 
 
 app.post("/delete/:id", (req, res) => {
-  // Need to add a code to delete
 
   delete cardDatabase[req.params.id];
 
