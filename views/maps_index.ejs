@@ -14,7 +14,6 @@
   <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
 
      <script src="https://kit.fontawesome.com/ea63d3f158.js" crossorigin="anonymous"></script>
-
      <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
      <script type="text/javascript" src="/scripts/app.js"></script>
      <script type="text/javascript" src="/scripts/helperfunction.js"></script>
@@ -42,7 +41,18 @@
         <h5 class="card-title"><%= cards[card].title %></h5>
         <p class="card-text"><%= cards[card].description %></p>
         <div class="mapbuttons">
-        <a href="edit_map" class="btn btn-primary">Edit</a>
+
+
+
+        <form method="GET" action="/edit_map/<%= cards[card].id %>">
+          <button class="btn btn-primary" type="submit">
+            Edit
+          </button>
+        </form>
+
+        <!-- <a href="edit_map" class="btn btn-primary">Edit</a> -->
+
+
 
         <div class="heart-container">
           <i class="far fa-heart"></i>
@@ -82,18 +92,18 @@
 
 
 
-$(document).ready(function() {
+// $(document).ready(function() {
 
-  const maps = $(".map-class")
+  // const maps = $(".map-class")
 
-  maps.each(function(index) {
-    const mapId = $( this ).attr("id")
-    const mapLat = $( this ).attr("data-lon")
-    const mapLon = $( this ).attr("data-lat")
-    initMap(Number(mapLat), Number(mapLon), mapId)
-  });
+  // maps.each(function(index) {
+  //   const mapId = $( this ).attr("id")
+  //   const mapLat = $( this ).attr("data-lon")
+  //   const mapLon = $( this ).attr("data-lat")
+  //   initMap(Number(mapLat), Number(mapLon), mapId)
+  // });
 
-  });
+  // });
 
 
 </script>
@@ -101,13 +111,12 @@ $(document).ready(function() {
 
 
 
-<!-- FINISH TEST API-->
+<%- include('partials/_footer') %>
+</body>
 
-  </script>
-  <script async defer
+
+<script
     src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.API_KEY %>&callback=initMap">
     </script>
 
-<%- include('partials/_footer') %>
-</body>
 </html>

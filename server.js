@@ -93,7 +93,7 @@ app.get("/login", (req, res) => {
 app.post("/login", (req, res) => {
   const body = req.body;
   req.session.id = body.email;
-  res.redirect("/");
+  res.redirect("/maps");
 });
 
 app.get("/register", (req, res) => {
@@ -238,8 +238,6 @@ app.post("/createmap", (req, res) => {
     id
   }
 
-  console.log(cardDatabase);
-
   res.redirect("/maps")
 
 
@@ -256,33 +254,63 @@ app.post("/createmap", (req, res) => {
 
 });
 
-app.get("/edit_map", (req, res) => {
+
+
+
+
+
+
+
+app.get("/edit_map/:id", (req, res) => {
   const user = req.session.id;
-  res.render("edit_map", { user: user });
+
+  const id = cardDatabase[req.params.id];
+  res.render("edit_map", { user: user, cardDetails: id });
 });
 
-app.post("/edit_map", (req, res) => {
+
+
+
+app.post("/edit_map/:id", (req, res) => {
   const title = req.body.title;
   const description = req.body.description;
   const longitude = req.body.longitude;
   const latitude = req.body.latitude;
   // const created_on = Date().now();
-  const user_id = 1;
+  // const user_id = 1;
 
+  // console.log(title);
+  console.log(description);
+  // console.log(longitude);
+  // console.log(req.params);
 
+  // const id = cardDatabase[req.params.id];
 
+  cardDatabase[req.params.id] = {
+    title,
+    description,
+    longitude,
+    latitude,
+    id: req.params.id
+  };
 
-
-
-  db.query(
-    `UPDATE maps (title, description, longitude, latitude, created_on, user_id)
-  SET ($1, $2, $3, $4, $5, $6)
-  RETURNING *;`,
-    [title, description, longitude, latitude, "2021-03-11 09:30:00", user_id]
-  )
-    .then((result) => result.rows[0])
-    .catch((err) => console.log(err.message));
   res.redirect("/maps");
+
+
+
+
+
+
+
+  // db.query(
+  //   `UPDATE maps (title, description, longitude, latitude, created_on, user_id)
+  // SET ($1, $2, $3, $4, $5, $6)
+  // RETURNING *;`,
+  //   [title, description, longitude, latitude, "2021-03-11 09:30:00", user_id]
+  // )
+  //   .then((result) => result.rows[0])
+  //   .catch((err) => console.log(err.message));
+  // res.redirect("/maps");
 });
 
 
