@@ -1,6 +1,6 @@
 # WikiMaps 
 
-Welcome to WikiMaps, an application where users can explore the world, one map at a time! Want to know the top five restaurants in Toronto? Maybe you want to share the top ten best green spaces in Ottawa? You can view maps others have made and even create your own!
+Welcome to Wiki Maps, an application where users can explore the world, one map at a time! Want to know the top five restaurants in Toronto? Maybe you want to share the top ten best green spaces in Ottawa? You can view maps others have made and even create your own!
 
 When you visit our site, users first see the Browse Maps page where you can explore maps others have made and read the description of each.
 
