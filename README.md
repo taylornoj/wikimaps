@@ -18,6 +18,10 @@ If you have an idea for a new map, head to the Create a New Map button to start 
 
 !["New Map"](https://github.com/taylornoj/wikimaps/blob/master/docs/create-map.jpg?raw=true)
 
+After completing their map, users are then returned to their profile and see an updated list of their maps!
+
+!["Updated Maps"](https://github.com/taylornoj/wikimaps/blob/master/docs/updated-maps.jpg?raw=true)
+
 
 ## Dependencies
 
