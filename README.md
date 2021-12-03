@@ -16,7 +16,7 @@ Users can edit their map with any new information. They can change the title and
 
 If you have an idea for a new map, head to the Create a New Map button to start from scratch.  Users can enter a catchy title to draw other users in and a description so users know what to expect when they open the map. Users can enter the longitude and latitude to place the marker on the exact location of their choice.
 
-!["New Map"](https://github.com/taylornoj/wikimaps/blob/master/docs/edit.jpg?raw=true)
+!["New Map"](https://github.com/taylornoj/wikimaps/blob/master/docs/create-map.jpg?raw=true)
 
 
 ## Dependencies
